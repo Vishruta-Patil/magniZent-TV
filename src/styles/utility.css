@@ -1,0 +1,141 @@
+/* >>>>>>>>>>>>>>Flex Container<<<<<<<<<<<< */
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* >>>>>>>>>>>>>>Button<<<<<<<<<<<<<<< */
+button {
+  border: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1.8rem;
+}
+
+.outline-btn {
+  background-color: var(--white-color);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.hero-btn {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-weight: bold;
+}
+
+.outline-btn:hover,
+.hero-btn:hover {
+  opacity: 0.7;
+}
+
+/* >>>>>>>>>>>>>>Divider<<<<<<<<<<<<<< */
+.hr-line {
+  height: 1px;
+  border-width: 0;
+  background-color: var(--hr-line);
+  margin: 1.5rem 0;
+}
+
+/* >>>>>>>>>>>>>>Color<<<<<<<<<<<<<<< */
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.black-color {
+  color: var(--black-color);
+}
+
+/* >>>>>>>>>>>>>>Font<<<<<<<<<<<<<< */
+.font-lg {
+  font-size: 4rem;
+}
+
+.font-header {
+  font-size: 3.6rem;
+}
+
+.font-md {
+  font-size: 2.5rem;
+}
+
+.font-sm {
+  font-size: 2rem;
+}
+
+/* >>>>>>>>>>>>>>Gutter<<<<<<<<<<<<<< */
+.space-XS {
+  margin: 0.4rem;
+}
+
+.space-S {
+  margin: 0.8rem;
+}
+
+.space-M {
+  margin: 1.2rem;
+}
+
+.space-L {
+  margin: 1.6rem;
+}
+
+.space-XL {
+  margin: 2rem;
+}
+
+.space-XXL {
+  margin: 3.2rem;
+}
+
+/* >>>>>>>>>>>>>>Other Utlity<<<<<<<<<<<<<< */
+a {
+    text-decoration: none;
+  }
+
+ul {
+  list-style-type: none;
+}
+
+.underline-header {
+    width: 9rem;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: auto;
+    margin-top: 1px;
+  }
