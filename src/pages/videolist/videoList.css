@@ -1,0 +1,20 @@
+.video-list-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  gap: 5rem;
+  margin: 3rem 2rem;
+}
+
+.video-listing-hero-container {
+  grid-area: video;
+}
+
+.video-list-container {
+  display: grid;
+  grid-template-areas:
+    "menu video video video video video"
+    ;
+  grid-gap: 10px;
+
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}

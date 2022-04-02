@@ -1,0 +1,18 @@
+.drawer-container {
+    grid-area: menu;
+    color:var(--secondary-color);
+    background-color: var(--navbar-header-color);
+    min-height: 100vh;
+}
+
+.drawer-unit {
+    padding: 1.5rem ;
+    cursor: pointer;
+    color:var(--secondary-color);
+}
+
+.active {
+    background-color: var(--highlight-color);
+    color:var(--primary-color);
+}
+
