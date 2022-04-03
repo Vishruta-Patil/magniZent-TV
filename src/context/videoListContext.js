@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import videoListReducer from "../reducer/videoListReducer";
+import { categoryFilterArr } from "../utils/category";
 
 const VideoListContext = createContext()
 const useVideoList = () => useContext(VideoListContext)
@@ -10,27 +11,9 @@ const initialValue = {
     category:"All",
 }
 
-const filterArr = (state) => {
-    if (state.category === "All") {
-        return state.videoList;
-    }
-    else if(state.category === "Astrophysics") {
-        return state.videoList.filter((a) => state.category === a.category)
-    }
-    else if(state.category === "Astrobiology") {
-        return state.videoList.filter((a) => state.category === a.category)
-    }
-    else if(state.category === "Cosmic Mysteries") {
-        return state.videoList.filter((a) => state.category === a.category)
-    }
-    else if(state.category === "Universe") {
-        return state.videoList.filter((a) => state.category === a.category)
-    }
-}
-
 const VideoListProvider = ({children}) => {
     const [state, dispatch] = useReducer(videoListReducer, initialValue)
-    const videoFilterList = filterArr(state)
+    const videoFilterList = categoryFilterArr(state)
     return (
         <VideoListContext.Provider value={{state, dispatch, videoFilterList}}>
             {children}

@@ -1,4 +1,4 @@
-import { GET_VIDEO_LIST, LOADER } from "./videoListConstant"
+import { GET_VIDEO_LIST, LOADER, CATEGORY } from "./videoListConstant"
 
 const videoListReducer = (state, action) => {
     switch(action.type) {
@@ -12,7 +12,7 @@ const videoListReducer = (state, action) => {
                 ...state,
                 loader: !state.loader
             }
-        case "CATEGORY":
+        case CATEGORY:
             return {
                 ...state,
                 category: action.payload
