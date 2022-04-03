@@ -6,8 +6,7 @@ export const getVideoList = async (dispatch) => {
   try {
     const response = await axios.get("/api/videos");
     dispatch({type: LOADER})
-    dispatch({ type: GET_VIDEO_LIST, payload: response.data.videos });
-    dispatch({type:CATEGORY, payload:"All"})
+    dispatch({ type: GET_VIDEO_LIST, payload: response.data.videos, category:"All" });
   } catch (err) {
     dispatch({type: LOADER})
     console.log(err);

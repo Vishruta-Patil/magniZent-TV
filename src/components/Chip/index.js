@@ -5,23 +5,15 @@ import { CATEGORY } from "../../reducer/videoListConstant";
 const Chip = () => {
   const {state, dispatch} = useVideoList()
   const {category} = state
+  const categoryData = ["All", "Astrophysics", "Astrobiology", "Cosmic Mysteries", "Universe" ]
+
   return (
     <div className="chip-container flex">
-      <div className={`chip font-sm ${category === "All" ? "active" : ""}`} onClick={() => dispatch({type: CATEGORY, payload:"All"})}>
-        <p>All</p>
+      {categoryData.map((item, index) => (
+      <div className={`chip font-sm ${category === item ? "active" : ""}`} onClick={() => dispatch({type: CATEGORY, payload:item})} key={index}>
+        <p>{item}</p>
       </div>
-      <div className={`chip font-sm ${category === "Astrophysics" ? "active" : ""}`} onClick={() => dispatch({type: CATEGORY, payload:"Astrophysics"})}>
-        <p>Astrophysics</p>
-      </div>
-      <div className={`chip font-sm ${category === "Astrobiology" ? "active" : ""}`} onClick={() => dispatch({type: CATEGORY, payload:"Astrobiology"})}>
-        <p>Astrobiology</p>
-      </div>
-      <div className={`chip font-sm ${category === "Cosmic Mysteries" ? "active" : ""}`} onClick={() => dispatch({type: CATEGORY, payload:"Cosmic Mysteries"})}>
-        <p>Cosmic Mysteries</p>
-      </div>
-      <div className={`chip font-sm ${category === "Universe" ? "active" : ""}`} onClick={() => dispatch({type: CATEGORY, payload:"Universe"})}>
-        <p>Universe</p>
-      </div>
+      ))}
     </div>
   );
 };
