@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Chip from "../../components/Chip/index.js";
 import VideoCard from "../../components/Common/VideoCard/index.js";
-import { getVideoList } from "../../Services/videoService.js";
+import { getVideoList } from "../../utils/apiHandler/videoHandler.js";
 import "./videoList.css";
 import { useVideoList } from "../../context/videoListContext.js";
 import Loader from "../../components/Common/Loader";
