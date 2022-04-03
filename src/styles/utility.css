@@ -52,7 +52,7 @@ button {
 .hero-btn {
   background-color: var(--primary-color);
   color: var(--white-color);
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .outline-btn:hover,
@@ -82,20 +82,23 @@ button {
 }
 
 /* >>>>>>>>>>>>>>Font<<<<<<<<<<<<<< */
+.font-xl {
+  font-size: 5rem;
+}
 .font-lg {
   font-size: 4rem;
 }
 
 .font-header {
-  font-size: 3.6rem;
+  font-size: 3rem;
 }
 
 .font-md {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
 }
 
 .font-sm {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 /* >>>>>>>>>>>>>>Gutter<<<<<<<<<<<<<< */

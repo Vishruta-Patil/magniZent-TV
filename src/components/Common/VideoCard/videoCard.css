@@ -1,0 +1,31 @@
+.video-card {
+    color: var(--secondary-color);
+    width:375px;
+}
+
+.img-container {
+    background-color: black;
+    width:375px;
+    height:280px;
+    border-radius: 2rem;
+    margin-bottom: 5px;
+}
+
+.video-img {
+    width:375px;
+    object-fit: contain;
+    align-items: center;
+    vertical-align: middle
+}
+
+.more-icon {
+    margin-left: auto;
+}
+
+.video-title {
+    font-weight: var(--font-weight-bold);
+}
+
+.video-subtitle {
+color: rgb(255, 255, 255, 0.5)
+}

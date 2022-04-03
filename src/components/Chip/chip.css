@@ -1,0 +1,16 @@
+.chip-container {
+  gap: 1.5rem;
+  margin: 1.5rem 0 0 1rem;
+}
+
+.chip {
+  background-color: var(--highlight-color);
+  padding: 1rem 1.5rem;
+  color: var(--secondary-color);
+  border-radius: 1.5rem;
+  cursor: pointer;
+}
+
+.chip.active {
+  background-color: var(--primary-color);
+}

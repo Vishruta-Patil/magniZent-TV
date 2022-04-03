@@ -1,10 +1,14 @@
 import "./App.css";
+import Header from "./components/Header";
+import "./styles/index.css";
+import { Router } from "./components/Routes";
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Shree Krishna</h1>
-      <h2>magniZent TV</h2>
+      <Header />
+      <Router />
     </div>
   );
 }
