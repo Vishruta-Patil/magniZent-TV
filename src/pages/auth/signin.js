@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Navigate, useNavigate } from "react-router";
 import { LOGIN_STATUS} from "../../reducer/auth/authConstant"
 import { useAuth } from "../../context/authContext";
+import { signInHandler } from "../../utils/apiHandler/authHandler";
 import "./auth.css"
 
 export const SignIn = () => {
@@ -14,20 +15,6 @@ export const SignIn = () => {
     email: "",
     password: "",
   });
-
-  const signInHandler = async () => {
-    try {
-      const response = await axios.post("/api/auth/signup", {
-        email: credentials.email,
-        password: credentials.password,
-      });
-      localStorage.setItem("token", response.data.encodedToken);
-      navigate("/");
-      dispatch({type: LOGIN_STATUS})
-    } catch (err) {
-      console.log("Error: ", err);
-    }
-  };
 
   return (
     <div className="login-container signin-container flex-column">
@@ -57,7 +44,7 @@ export const SignIn = () => {
         <label htmlFor="terms-input">I accept all the terms and conditions</label>
       </div>
 
-      <button className="hero-btn" onClick={signInHandler}>
+      <button className="hero-btn" onClick={() => signInHandler(dispatch, navigate, credentials)}>
         Sign In
       </button>
       <p className="gen-msg">
