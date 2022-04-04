@@ -1,0 +1,88 @@
+.login-container {
+  box-shadow: var(--dark-box-shadow);
+  border: 2px solid var(--border-color);
+  padding: 3rem;
+  gap: 2rem; 
+  margin: auto;
+  max-width: 700px;
+  margin-top: 5rem;
+  background-color: var(--background-color);
+  border-radius: 1rem;
+}
+
+.signin-container{
+  padding-top: 1rem;
+  margin-top: 3rem
+}
+
+.main-header {
+  font-size: 3rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.gen-msg {
+  color: var(--secondary-color);
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.top-msg{
+  color: var(--secondary-color);
+}
+
+.gen-msg span {
+  font-weight: bold;
+}
+
+.input-box {
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--highlight-color);
+  color: var(--secondary-color)
+}
+
+.login-hero-btn {
+  margin-top: 2rem;
+}
+
+.input-box:focus {
+  outline: none;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+.terms-container {
+  gap: 1rem;
+}
+
+.terms-container label {
+  font-size: 1.5rem;
+  color: var(--secondary-color)
+}
+
+.hr-line {
+  margin: 0rem 0 2rem;
+}
+
+.header-divider {
+  height: 0.7px;
+}
+
+.reg-header {
+  margin-top: 0
+}
+
+@media only screen and (max-width: 1000px) {
+  .login-container {
+    margin: auto;
+    margin-top: 5rem;
+  }
+}
+
+@media only screen and (max-width: 725px) {
+  .login-container {
+    margin: 5rem 2.5rem;
+  }
+}

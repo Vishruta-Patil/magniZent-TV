@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import videoListReducer from "../reducer/videoListReducer";
+import videoListReducer from "../reducer/video/videoListReducer";
 import { categoryFilterArr } from "../utils/category";
 
 const VideoListContext = createContext()

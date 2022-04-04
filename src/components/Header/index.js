@@ -1,7 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { LOGIN_STATUS } from "../../reducer/auth/authConstant";
+import {useAuth } from "../../context/authContext"
 import "./header.css"
 
 const Header = () => {
+  const { state, dispatch } = useAuth();
+  const navigate = useNavigate();
+
+  const logOutHandler = () => {
+    localStorage.clear();
+    dispatch({ type: LOGIN_STATUS });
+    navigate("/");
+  };
+
+  const logInHandler = () => {
+    navigate("/login");
+  };
   return (
     <div className="header-container">
       <div className="header">
@@ -26,10 +40,25 @@ const Header = () => {
         </div>
 
         <div className="icon-container flex-gap">
-          <div className="icon-unit">
+        <div className="icon-unit">
+            {!state.loginStatus ? (
+              <div
+                className="flex-column flex-center secondary-color header-icon"
+                onClick={logInHandler}
+              >
                 <span className="material-icons icon"> login </span>
                 <p>Login</p>
               </div>
+            ) : (
+              <div
+                className="flex-column flex-center secondary-color header-icon"
+                onClick={logOutHandler}
+              >
+                <span className="material-icons icon"> logout</span>
+                <p>Logout</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 

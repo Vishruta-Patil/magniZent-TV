@@ -1,5 +1,5 @@
 import axios from "axios";
-import {GET_VIDEO_LIST, LOADER, GET_VIDEO} from "../../reducer/videoListConstant"
+import {GET_VIDEO_LIST, LOADER, GET_VIDEO} from "../../reducer/video/videoListConstant"
 import { getAllVideos, getSingleVideo } from "../../Services/services";
 
 export const getVideoList = async (dispatch) => {

@@ -1,6 +1,6 @@
 import "./chip.css";
 import { useVideoList } from "../../context/videoListContext";
-import { CATEGORY } from "../../reducer/videoListConstant";
+import { CATEGORY } from "../../reducer/video/videoListConstant";
 
 const Chip = () => {
   const {state, dispatch} = useVideoList()
