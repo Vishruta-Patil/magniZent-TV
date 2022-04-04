@@ -15,7 +15,7 @@ export const LogIn = () => {
   };
 
   const guestCredentailsHandler = async () => {
-    await login("adarshbalika@gmail.com", "adarshBalika123", dispatch, navigate);
+    await login("test123@gmail.com", "test123", dispatch, navigate);
   };
 
   return (
