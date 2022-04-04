@@ -9,9 +9,7 @@ export const signInHandler = async (dispatch, navigate) => {
       });
       localStorage.setItem("token", response.data.encodedToken);
       navigate("/");
-    //   dispatch({type: USER_LOADING})
       dispatch({type: LOGIN_STATUS})
-    //    setTimeout(() => dispatch({type: USER_LOADING}), 500)
     } catch (err) {
       console.log("Error: ", err);
     }
@@ -26,9 +24,7 @@ export const signInHandler = async (dispatch, navigate) => {
       });
       localStorage.setItem("token", response.data.encodedToken);
       navigate("/");
-    //   dispatch({ type: USER_LOADING });
       dispatch({type: LOGIN_STATUS})
-    //   setTimeout(() => dispatch({ type: USER_LOADING }), 1000);
     } catch (err) {
       console.log("Error: ", err);
     }
