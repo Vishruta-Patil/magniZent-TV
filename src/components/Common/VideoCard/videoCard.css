@@ -20,6 +20,10 @@
 
 .more-icon {
     margin-left: auto;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 0;
+    color: var(--secondary-color);
 }
 
 .video-title {
@@ -28,4 +32,8 @@
 
 .video-subtitle {
 color: rgb(255, 255, 255, 0.5)
+}
+
+.video-inner-content {
+    position: relative;
 }

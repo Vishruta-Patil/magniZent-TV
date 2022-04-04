@@ -28,6 +28,7 @@
     --background-color: #141319;
     --chip-color: #34343D;
     --highlight-color: #27262B;
-    --border-color: #35312b
+    --border-color: #35312b;
+    --dark-box-shadow: 0 -2px 3rem rgba(0, 0, 0, 1);
   }
   
