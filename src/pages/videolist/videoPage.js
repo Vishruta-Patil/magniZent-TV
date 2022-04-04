@@ -5,6 +5,7 @@ import { getVideoList } from "../../utils/apiHandler/videoHandler.js";
 import "./videoList.css";
 import { useVideoList } from "../../context/videoListContext.js";
 import Loader from "../../components/Common/Loader";
+import { Link } from "react-router-dom";
 
 const VideoListPage = () => {
   const { dispatch, state, videoFilterList } = useVideoList();
@@ -21,7 +22,9 @@ const VideoListPage = () => {
           <Loader />
         ) : (
           videoFilterList.map((item, index) => (
-            <VideoCard video={item} key={index} />
+            <Link key={index} to={`/video/${item._id}`}>
+              <VideoCard video={item} key={index} />
+            </Link>
           ))
         )}
       </div>
