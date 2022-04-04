@@ -9,6 +9,7 @@ const initialValue = {
     loader: false,
     videoList: [],
     category:"All",
+    video: [],
 }
 
 const VideoListProvider = ({children}) => {

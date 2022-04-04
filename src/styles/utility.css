@@ -34,6 +34,10 @@
   flex-wrap: wrap;
 }
 
+.flex-gap {
+  gap: 3rem;
+}
+
 /* >>>>>>>>>>>>>>Button<<<<<<<<<<<<<<< */
 button {
   border: none;
@@ -91,6 +95,10 @@ button {
 
 .font-header {
   font-size: 3rem;
+}
+
+.font-rg {
+  font-size: 2.2rem;
 }
 
 .font-md {

@@ -1,39 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
 
 .header-container {
-    grid-area: header;
-    background-color: var(--navbar-header-color);
-    color: var(--secondary-color);
-    border-bottom: 2px solid var(--border-color);
-  }  
+  grid-area: header;
+  background-color: var(--navbar-header-color);
+  color: var(--secondary-color);
+  border-bottom: 2px solid var(--border-color);
+}
 
 .header {
   color: var(--secondary-color);
   display: flex;
   align-items: center;
   display: flex;
-  padding: 1.5rem; 
+  padding: 1.5rem;
 }
 
 .main-title {
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
   font-size: 3.5rem;
   color: var(--secondary-color);
 }
 
 .bold-main-title {
   font-size: 4.5rem;
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
 
 .header-inner-container > li {
   list-style-type: none;
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
 }
 
 .header-main-content {
@@ -77,26 +71,26 @@
 }
 
 .search-bar-container {
-  margin: 1rem 5rem ;
+  margin: 1rem 5rem;
   background-color: black;
   color: var(--secondary-color);
   border: 2px solid var(--border-color);
- border-radius: 20px;
- width:50%;
- margin: auto;
+  border-radius: 20px;
+  width: 50%;
+  margin: auto;
 }
 
 .search-bar {
- display: flex;
+  display: flex;
 }
 
 .input-search {
-    background-color: var(--highlight-color);
+  background-color: var(--highlight-color);
   color: var(--primary-color);
   width: 90%;
   padding: 1rem;
   border: none;
- border-radius: 20px 0 0 20px ;
+  border-radius: 20px 0 0 20px;
 }
 
 .input-search:focus {
@@ -129,16 +123,13 @@
   height: 0.7px;
 }
 
-
-
 .shop-now-link {
-  color: var(--white-color)
+  color: var(--white-color);
 }
 
 .header-icon:hover {
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
-
 
 @media only screen and (max-width: 1000px) {
   .search-bar-block {
@@ -151,7 +142,7 @@
   }
   .hr-line {
     display: block;
-  } 
+  }
 }
 
 @media only screen and (max-width: 675px) {

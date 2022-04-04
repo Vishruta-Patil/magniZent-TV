@@ -38,7 +38,7 @@ const Drawer = () => {
     <aside className="drawer-container">
       <ul>
         {drawerData.map(data => (
-           <NavLink className="drawer-unit flex font-md"  activeclassname="active" to={data.to} key={data.id}>
+           <NavLink className="drawer-unit flex-gap align-center font-md"  activeclassname="active" to={data.to} key={data.id}>
            <span className="material-icons">{data.icon}</span>
            <p>{data.title}</p>
          </NavLink>
