@@ -75,7 +75,7 @@ export const removeItemFromLikedVideos = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
     const videoId = request.params.videoId;
-    const filteredLikes = user.likes.filter((item) => item._id !== videoId);
+    const filteredLikes = user.likes.filter((item) => item._id != videoId);
     this.db.users.update({ likes: filteredLikes });
     return new Response(200, {}, { likes: filteredLikes });
   }

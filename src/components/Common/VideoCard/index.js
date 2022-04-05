@@ -11,7 +11,7 @@ const VideoCard = ({ video }) => {
       </div>
       <div className="video-inner-content flex">
         <p className="video-title font-md">{video.title}</p>
-        <button className="more-icon" onClick={() => setModalVisibility(!modalVisibility)}>
+        <button className="more-icon" onClick={(e) => {e.stopPropagation(); setModalVisibility(!modalVisibility)} }>
           <span className="material-icons">more_vert</span>
         </button>
 
