@@ -4,7 +4,11 @@ import { getVideo } from "../../utils/apiHandler/videoHandler";
 import { useVideoList } from "../../context/videoListContext";
 import Drawer from "../../components/Drawer";
 import Loader from "../../components/Common/Loader";
-import { addToLikeVideo, deleteLikedVideo } from "../../utils/apiHandler/likedVideoHandler";
+import {
+  addToLikeVideo,
+  deleteLikedVideo,
+} from "../../utils/apiHandler/likedVideoHandler";
+import { addToWatchLaterVideo, deleteWatchLaterVideo} from "../../utils/apiHandler/watchlaterVideoHandler";
 import "./index.css";
 
 export const Video = () => {
@@ -23,6 +27,16 @@ export const Video = () => {
   };
 
   const isVideoLiked = isLikedHandler(video);
+
+  const isWatchLaterHandler = (video) => {
+    const isWatched = state.watchLaterVideos.find(
+      (item) => item._id === video._id
+    );
+    if (isWatched) return true;
+    else false;
+  };
+
+  const isWatchLater = isWatchLaterHandler(video);
 
   return (
     <div className="video-list-container">
@@ -64,10 +78,18 @@ export const Video = () => {
                   </button>
                 )}
 
-                <button className="video-btn align-center">
-                  <span className="material-icons">watch_later</span>
-                  <p>Watch Later</p>
-                </button>
+                {!isWatchLater ? (
+                  <button className="video-btn align-center" onClick={() => addToWatchLaterVideo(video, dispatch)}>
+                    <span className="material-icons">watch_later</span>
+                    <p>Watch Later</p>
+                  </button>
+                ) : (
+                  <button className="video-btn align-center" onClick={() => deleteWatchLaterVideo(video._id, dispatch)}>
+                    <span className="material-icons" style={{color:"blue"}}>watch_later</span>
+                    <p>Watch Later</p>
+                  </button>
+                )}
+
                 <button className="video-btn align-center">
                   <span className="material-icons">bookmark</span>
                   <p>Save</p>
