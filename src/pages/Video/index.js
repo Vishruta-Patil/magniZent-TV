@@ -4,6 +4,7 @@ import { getVideo } from "../../utils/apiHandler/videoHandler";
 import { useVideoList } from "../../context/videoListContext";
 import Drawer from "../../components/Drawer";
 import Loader from "../../components/Common/Loader";
+import { addToLikeVideo, deleteLikedVideo } from "../../utils/apiHandler/likedVideoHandler";
 import "./index.css";
 
 export const Video = () => {
@@ -14,6 +15,14 @@ export const Video = () => {
   useEffect(() => {
     getVideo(params.videoId, dispatch);
   }, []);
+
+  const isLikedHandler = (video) => {
+    const isLiked = state.likedVideos.find((item) => item._id === video._id);
+    if (isLiked) return true;
+    else false;
+  };
+
+  const isVideoLiked = isLikedHandler(video);
 
   return (
     <div className="video-list-container">
@@ -32,29 +41,45 @@ export const Video = () => {
           ></iframe>
 
           <div className="content-container space-M">
-              <div className="justify-between">
-                <h3 className="font-rg main-title">{video.title}</h3>
-                <div className="btn-container flex">
-                  <button className="video-btn align-center">
+            <div className="justify-between">
+              <h3 className="font-rg main-title">{video.title}</h3>
+              <div className="btn-container flex">
+                {!isVideoLiked ? (
+                  <button
+                    className="video-btn align-center"
+                    onClick={() => addToLikeVideo(video, dispatch)}
+                  >
                     <span className="material-icons">favorite</span>
                     <p>Like</p>
                   </button>
-                  <button className="video-btn align-center">
-                    <span className="material-icons">watch_later</span>
-                    <p>Watch Later</p>
+                ) : (
+                  <button
+                    className="video-btn align-center"
+                    onClick={() => deleteLikedVideo(video._id, dispatch)}
+                  >
+                    <span className="material-icons" style={{ color: "red" }}>
+                      favorite
+                    </span>
+                    <p>Like</p>
                   </button>
-                  <button className="video-btn align-center">
-                    <span className="material-icons">bookmark</span>
-                    <p>Save</p>
-                  </button>
-                  <button className="video-btn align-center">
-                    <span className="material-icons">share</span>
-                    <p>Copy Link</p>
-                  </button>
-                </div>
+                )}
+
+                <button className="video-btn align-center">
+                  <span className="material-icons">watch_later</span>
+                  <p>Watch Later</p>
+                </button>
+                <button className="video-btn align-center">
+                  <span className="material-icons">bookmark</span>
+                  <p>Save</p>
+                </button>
+                <button className="video-btn align-center">
+                  <span className="material-icons">share</span>
+                  <p>Copy Link</p>
+                </button>
               </div>
-              <p className="font-md">{video.creator}</p>
-           </div>
+            </div>
+            <p className="font-md">{video.creator}</p>
+          </div>
         </div>
       )}
     </div>

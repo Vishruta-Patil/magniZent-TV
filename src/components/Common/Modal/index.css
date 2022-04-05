@@ -10,7 +10,8 @@
 
 .modal-unit {
     padding: 1rem;
-    gap: 1rem
+    gap: 1rem;
+    cursor: pointer
 }
 
 .modal-unit:hover {

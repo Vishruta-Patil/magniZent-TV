@@ -2,10 +2,9 @@
  * Videos Database can be added here.
  * You can add videos of your wish with different attributes
  * */
-import { v4 as uuid } from "uuid";
 export const videos = [
   {
-    _id: uuid(),
+    _id: 1,
     title: "The 'Cow' Explosion: Black hole eats white Dwarf",
     creator: "NASA Jet Propulsion Laboratory",
     category: "Astrophysics",
@@ -13,7 +12,7 @@ export const videos = [
     iframe_url: "https://www.youtube.com/embed/m2f_vXxokNg"
   },
   {
-    _id: uuid(),
+    _id: 2,
     title: "The Cosmic Scale",
     creator: "SEA",
     category: "Cosmic Mysteries",
@@ -21,7 +20,7 @@ export const videos = [
     iframe_url: "https://www.youtube.com/embed/4iC9Qi3y9q8"
   },
   {
-    _id: uuid(),
+    _id: 3,
     title: "The Fabric of Cosmos - What is Space? ",
     creator: "Advexon TV",
     category: "Cosmic Mysteries",
@@ -29,7 +28,7 @@ export const videos = [
     iframe_url: "https://www.youtube.com/embed/jy1TALSaRbw"
   },
   {
-    _id: uuid(),
+    _id: 4,
     title: "Birth of the Universe",
     creator: "Naked Science",
     category: "Universe",
@@ -37,7 +36,7 @@ export const videos = [
     iframe_url: "https://www.youtube.com/embed/2OpbdMjvni0"
   },
   {
-    _id: uuid(),
+    _id: 5,
     title: "Journey Through the Universe",
     creator: "Advexon Science Network",
     category: "Universe",
@@ -45,7 +44,7 @@ export const videos = [
     iframe_url: "https://www.youtube.com/embed/mO3Q4bRQZ3k"
   },
   {
-    _id: uuid(),
+    _id: 6,
     title: "Underwater 'white smoker' vents",
     creator: "NASA Jet Propulsion Laboratory",
     category: "Astrobiology",
@@ -53,7 +52,7 @@ export const videos = [
     iframe_url: "https://www.youtube.com/embed/cX4zzFWx9mA"
   },
   {
-    _id: uuid(),
+    _id: 7,
     title: "The Search for another Earth",
     creator: "NASA Jet Propulsion Laboratory",
     category: "Astrophysics",
@@ -61,7 +60,7 @@ export const videos = [
     iframe_url: "https://www.youtube.com/embed/1tUSiWLyN9A"
   },
   {
-    _id: uuid(),
+    _id: 8,
     title: "Astrobiology Winter 2022",
     creator: "UW Astrobiology",
     category: "Astrobiology",
@@ -69,7 +68,7 @@ export const videos = [
     iframe_url: "https://www.youtube.com/embed/4bwVP627adU"
   },
   {
-    _id: uuid(),
+    _id: 9,
     title: "Amazing journey from Earth to end of the Universe",
     creator: "CoconutScienceLab",
     category: "Universe",
@@ -77,7 +76,7 @@ export const videos = [
     iframe_url: "https://www.youtube.com/embed/MkRSmynqonM"
   },
   {
-    _id: uuid(),
+    _id: 10,
     title: "What is Astrophysics Explained",
     creator: "Insane Curiosity",
     category: "Astrophysics",
@@ -85,7 +84,7 @@ export const videos = [
     iframe_url: "https://www.youtube.com/embed/TCrRs_OBN0E"
   },
   {
-    _id: uuid(),
+    _id: 11,
     title: "15 Years in Space: NASA's Apitzer Space Telescope",
     creator: "NASA Jet Propulsion Laboratory",
     category: "Astrophysics",

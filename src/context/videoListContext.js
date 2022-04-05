@@ -10,6 +10,8 @@ const initialValue = {
     videoList: [],
     category:"All",
     video: [],
+    likedVideos: [],
+    watchLaterVideos: [],
 }
 
 const VideoListProvider = ({children}) => {

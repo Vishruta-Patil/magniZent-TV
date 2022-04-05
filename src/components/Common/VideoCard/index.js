@@ -7,7 +7,7 @@ const VideoCard = ({ video }) => {
   return (
     <section className="video-card">
       <div className="img-container flex-center">
-        <img className="video-img" src={video.img_url} alt="" />
+        <img className="video-img" src={video.img_url} alt={video.title} />
       </div>
       <div className="video-inner-content flex">
         <p className="video-title font-md">{video.title}</p>
@@ -15,7 +15,7 @@ const VideoCard = ({ video }) => {
           <span className="material-icons">more_vert</span>
         </button>
 
-        {modalVisibility ? <Modal /> : null}
+        {modalVisibility ? <Modal id={video._id}/> : null}
       </div>
       <p className="video-subtitle font-sm">{video.creator}</p>
     </section>
