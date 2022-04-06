@@ -136,17 +136,25 @@ button {
 
 /* >>>>>>>>>>>>>>Other Utlity<<<<<<<<<<<<<< */
 a {
-    text-decoration: none;
-  }
+  text-decoration: none;
+}
 
 ul {
   list-style-type: none;
 }
 
 .underline-header {
-    width: 9rem;
-    height: 3px;
-    background-color: var(--primary-color);
-    margin: auto;
-    margin-top: 1px;
-  }
+  width: 9rem;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin: auto;
+  margin-top: 1px;
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.bold-highlight-color {
+  color: #fd776b;
+}

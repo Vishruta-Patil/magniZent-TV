@@ -12,7 +12,6 @@ export const getWatchLaterVideos = async(dispatch) => {
     try {
         const response = await axios.get("/api/user/watchlater", config)
         dispatch({type: GET_WATCHLATER_VIDEOS, payload: response.data.watchlater})
-        console.log(response)
     }
     catch(err) {
         console.log(err)
@@ -25,7 +24,6 @@ export const addToWatchLaterVideo = async(video, dispatch) => {
     }
     try {
         const response = await axios.post("/api/user/watchlater", data, config)
-        console.log(response)
         dispatch({type: GET_WATCHLATER_VIDEOS, payload: response.data.watchlater})
     } 
     catch(err) {
@@ -35,10 +33,8 @@ export const addToWatchLaterVideo = async(video, dispatch) => {
 
 export const deleteWatchLaterVideo = async(id, dispatch) => {
     try {
-        console.log(id)
         const response = await axios.delete(`/api/user/watchlater/${id}`, config)
         dispatch({type: GET_WATCHLATER_VIDEOS, payload: response.data.watchlater})
-        console.log(response)
     }
     catch(err) {
         console.log(err)

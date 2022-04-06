@@ -71,7 +71,7 @@ export const Video = () => {
                     className="video-btn align-center"
                     onClick={() => deleteLikedVideo(video._id, dispatch)}
                   >
-                    <span className="material-icons" style={{ color: "red" }}>
+                    <span className="material-icons bold-highlight-color">
                       favorite
                     </span>
                     <p>Like</p>
@@ -85,7 +85,7 @@ export const Video = () => {
                   </button>
                 ) : (
                   <button className="video-btn align-center" onClick={() => deleteWatchLaterVideo(video._id, dispatch)}>
-                    <span className="material-icons" style={{color:"blue"}}>watch_later</span>
+                    <span className="material-icons primary-color">watch_later</span>
                     <p>Watch Later</p>
                   </button>
                 )}

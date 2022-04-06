@@ -1,17 +1,23 @@
 .modal-container {
     background-color: var(--highlight-color);    
-    width: 25rem;
+    width: 27rem;
     border-radius: 1rem;
     z-index: 2;
     position: absolute;
     right: 2rem;
     top: 1rem;
+    font-size: 1.7rem;
 }
 
 .modal-unit {
     padding: 1rem;
     gap: 1rem;
-    cursor: pointer
+    cursor: pointer;
+    padding-bottom: 0;
+}
+
+.modal-unit:last-child {
+    padding-bottom: 1rem;
 }
 
 .modal-unit:hover {
