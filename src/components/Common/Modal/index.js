@@ -6,8 +6,9 @@ import {
   deleteWatchLaterVideo,
 } from "../../../utils/apiHandler/watchlaterVideoHandler";
 import { deleteHistoryVideo } from "../../../utils/apiHandler/historyVideoHandler";
+import { SET_PLAYLIST_MODAL } from "../../../reducer/video/videoListConstant";
 
-export const Modal = ({ id }) => {
+export const Modal = ({ id, setModal }) => {
   const { state, dispatch } = useVideoList();
   const { video, likedVideos, watchLaterVideos, historyVideos } = state;
 
@@ -22,8 +23,9 @@ export const Modal = ({ id }) => {
   const isWatched = isVideoPresent(historyVideos, video);
 
   return (
+    <>
     <div className="modal-container">
-      <div className="modal-unit flex align-center">
+      <div className="modal-unit flex align-center" onClick={() => setModal(true)}>
         <span className="material-icons">save</span>
         <p>Add to Playlist</p>
       </div>
@@ -66,5 +68,6 @@ export const Modal = ({ id }) => {
         </div>
       )}
     </div>
+    </>
   );
 };
