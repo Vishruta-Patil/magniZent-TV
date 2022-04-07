@@ -89,7 +89,7 @@ export const getVideosFromPlaylistHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
     const playlistId = request.params.playlistId;
-    const playlist = user.playlists.find((item) => item._id === playlistId);
+    const playlist = user.playlists.find((item) => item._id == playlistId);
     return new Response(200, {}, { playlist });
   }
   return new Response(
@@ -110,7 +110,7 @@ export const addVideoToPlaylistHandler = function (schema, request) {
   if (user) {
     const playlistId = request.params.playlistId;
     const { video } = JSON.parse(request.requestBody);
-    const playlist = user.playlists.find((item) => item._id === playlistId);
+    const playlist = user.playlists.find((item) => item._id == playlistId);
     if (playlist.videos.some((item) => item.id === video.id)) {
       return new Response(
         409,
@@ -140,7 +140,7 @@ export const removeVideoFromPlaylistHandler = function (schema, request) {
   if (user) {
     const playlistId = request.params.playlistId;
     const videoId = request.params.videoId;
-    let playlist = user.playlists.find((item) => item._id === playlistId);
+    let playlist = user.playlists.find((item) => item._id == playlistId);
     const filteredVideos = playlist.videos.filter(
       (item) => item._id !== videoId
     );

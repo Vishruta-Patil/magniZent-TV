@@ -13,7 +13,7 @@
     padding: 1rem;
     gap: 1rem;
     cursor: pointer;
-    padding-bottom: 0;
+    padding-bottom: 5px;
 }
 
 .modal-unit:last-child {

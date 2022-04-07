@@ -38,6 +38,10 @@
   gap: 3rem;
 }
 
+.flex-sm-gap {
+  gap: 1rem;
+}
+
 /* >>>>>>>>>>>>>>Button<<<<<<<<<<<<<<< */
 button {
   border: none;
@@ -157,4 +161,8 @@ ul {
 
 .bold-highlight-color {
   color: #fd776b;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

@@ -1,0 +1,17 @@
+.playlist-modal-container {
+    background-color: var(--highlight-color);    
+    width: 27rem;
+    border-radius: 1rem;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.7rem;
+    padding: 1rem;
+    gap:1rem
+}
+
+.create-btn {
+    padding: 5px;
+}

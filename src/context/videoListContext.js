@@ -13,6 +13,9 @@ const initialValue = {
     likedVideos: [],
     watchLaterVideos: [],
     historyVideos: [],
+    playlistVideo: [],
+    playlistModal: false,
+    singlePlaylist: []
 }
 
 const VideoListProvider = ({children}) => {

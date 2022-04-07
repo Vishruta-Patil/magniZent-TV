@@ -11,6 +11,7 @@ import {
   SignIn,
   LogIn,
 } from "../../pages";
+import { PlayListFolder } from "../../pages/playlist/playListFolder";
 
 export const Router = () => {
   const useAuth = () => {
@@ -39,6 +40,16 @@ export const Router = () => {
           </PrivateRoute>
         }
       />
+
+      <Route
+        path="/playlist/:playlistId"
+        element={
+          <PrivateRoute>
+            <PlayListFolder />
+          </PrivateRoute>
+        }
+      />
+      
       <Route
         path="/history"
         element={
