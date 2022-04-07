@@ -43,6 +43,11 @@ html {
   grid-gap: 10px;
 
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  
+}
+
+.video-list-content {
+  grid-area: video;
 }
 
 @media only screen and (max-width: 1000px) {

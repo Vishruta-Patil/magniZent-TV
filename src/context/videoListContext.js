@@ -12,6 +12,7 @@ const initialValue = {
     video: [],
     likedVideos: [],
     watchLaterVideos: [],
+    historyVideos: [],
 }
 
 const VideoListProvider = ({children}) => {

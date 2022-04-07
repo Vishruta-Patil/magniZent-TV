@@ -1,0 +1,16 @@
+.empty-box-img {
+    width: 35rem;
+    height: 35rem;
+}
+
+.empty-box-container {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%,-50%);
+    
+}
+
+.empty-box-content {
+    gap: 1.2rem;
+}

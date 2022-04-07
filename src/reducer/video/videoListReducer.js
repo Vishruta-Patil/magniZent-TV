@@ -1,4 +1,4 @@
-import { GET_VIDEO_LIST, LOADER, CATEGORY, GET_VIDEO, GET_LIKED_VIDEOS, GET_WATCHLATER_VIDEOS } from "./videoListConstant"
+import { GET_VIDEO_LIST, LOADER, CATEGORY, GET_VIDEO, GET_LIKED_VIDEOS, GET_WATCHLATER_VIDEOS, GET_HISTORY_VIDEOS } from "./videoListConstant"
 
 const videoListReducer = (state, action) => {
     switch(action.type) {
@@ -31,6 +31,11 @@ const videoListReducer = (state, action) => {
             return {
                 ...state,
                 watchLaterVideos: action.payload
+            }
+        case GET_HISTORY_VIDEOS: 
+            return {
+                ...state,
+                historyVideos: action.payload
             }
     }
 }

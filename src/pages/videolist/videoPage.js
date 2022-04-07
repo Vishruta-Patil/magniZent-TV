@@ -23,10 +23,9 @@ const VideoListPage = () => {
           <Loader />
         ) : (
           videoFilterList.map((item, index) => (
-            <Link key={index} to={`/video/${item._id}`}>
-              
+            // <Link key={index} to={`/video/${item._id}`}>       *doubt         
               <VideoCard video={item} key={index} from={true}/>
-            </Link>
+            // </Link>
           ))
         )}
       </div>

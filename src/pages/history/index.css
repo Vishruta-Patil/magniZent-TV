@@ -1,0 +1,21 @@
+.clearHistoryBtn {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.history-list-container {
+    display: grid;
+    grid-template-areas:
+      "menu btn btn btn btn btn"
+      "menu video video video video video"
+      
+      ;
+    grid-gap: 10px;
+  
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 3rem auto;
+    position: relative;
+
+  }
