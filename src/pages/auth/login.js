@@ -38,7 +38,7 @@ export const LogIn = () => {
         }}
       />
       <div className="terms-container flex">
-        <input id="terms-input" type="checkbox" />{" "}
+        <input id="terms-input" type="checkbox" />
         <label htmlFor="terms-input">I accept all the terms and conditions</label>
       </div>
 
@@ -49,9 +49,8 @@ export const LogIn = () => {
         Login With Guest Credentials
       </button>
       <p className="gen-msg">
-        Dont have an account,{" "}
+        Dont have an account,
         <Link className="primary-color" to="/signin">
-          {" "}
           Sign In!
         </Link>
       </p>
