@@ -17,7 +17,7 @@ useEffect(() => getVideoFromPlaylist(params.playlistId, dispatch), []);
       <Drawer />
       <div className="video-list-content">
       {state.singlePlaylist.videos.map((video, index) => 
-        <VideoCard video={video} key={index} />
+        <VideoCard video={video} key={index} from="playlistfolder" playListid={params.playlistId}/>
       )}
       </div>
     </div>

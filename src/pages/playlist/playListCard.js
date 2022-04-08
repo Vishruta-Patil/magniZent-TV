@@ -27,7 +27,7 @@ const PlayListCard = ({ playlist }) => {
           <span className="material-icons">more_vert</span>
         </button>
 
-        {modalVisibility ? <Modal id={playlist._id} /> : null}
+        {modalVisibility ? <Modal playListid={playlist._id} from="playlistcard"/> : null}
       </div>
     </section>
   );

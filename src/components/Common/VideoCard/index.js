@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import PlaylistModal from "../../PlaylistModal"
 import "./videoCard.css";
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({ video, from, playListid }) => {
   const [modalVisibility, setModalVisibility] = useState(false);
   const { state, dispatch } = useVideoList();
 
@@ -34,7 +34,7 @@ const VideoCard = ({ video }) => {
           <span className="material-icons">more_vert</span>
         </button>
 
-        {modalVisibility ? <Modal id={video._id} setModal={setModal} /> : null}
+        {modalVisibility ? <Modal id={video._id} setModal={setModal} video={video} from={from} playListid={playListid}/> : null}
       </div>
       <p className="video-subtitle font-sm">{video.creator}</p>
     </section>

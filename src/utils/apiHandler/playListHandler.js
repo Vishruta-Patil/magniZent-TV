@@ -54,10 +54,11 @@ export const createVideoInPlaylist = async(video, id, dispatch) => {
     }
 }
 
-export const deleteVideoFromPLaylist = async(playListId, videoId) => {
+export const deleteVideoFromPLaylist = async(playListId, videoId, dispatch) => {
     try {
         const response = await axios.delete(`/api/user/playlists/${playListId}/${videoId}`, config)
         dispatch({type: GET_SINGLE_PLAYLIST, payload: response.data.playlist})
+        console.log(response)
     }
     catch(err) {
         console.log(err)
