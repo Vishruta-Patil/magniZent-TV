@@ -10,7 +10,11 @@ const config = {
 
 export const getWatchLaterVideos = async(dispatch) => {
     try {
-        const response = await axios.get("/api/user/watchlater", config)
+        const response = await axios.get("/api/user/watchlater", {
+            headers: {
+              authorization: localStorage.getItem("token"),
+            },
+          })
         dispatch({type: GET_WATCHLATER_VIDEOS, payload: response.data.watchlater})
     }
     catch(err) {
@@ -23,7 +27,11 @@ export const addToWatchLaterVideo = async(video, dispatch) => {
         video,
     }
     try {
-        const response = await axios.post("/api/user/watchlater", data, config)
+        const response = await axios.post("/api/user/watchlater", data, {
+            headers: {
+              authorization: localStorage.getItem("token"),
+            },
+          })
         dispatch({type: GET_WATCHLATER_VIDEOS, payload: response.data.watchlater})
     } 
     catch(err) {
@@ -33,7 +41,11 @@ export const addToWatchLaterVideo = async(video, dispatch) => {
 
 export const deleteWatchLaterVideo = async(id, dispatch) => {
     try {
-        const response = await axios.delete(`/api/user/watchlater/${id}`, config)
+        const response = await axios.delete(`/api/user/watchlater/${id}`, {
+            headers: {
+              authorization: localStorage.getItem("token"),
+            },
+          })
         dispatch({type: GET_WATCHLATER_VIDEOS, payload: response.data.watchlater})
     }
     catch(err) {

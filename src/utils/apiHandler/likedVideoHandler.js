@@ -10,7 +10,11 @@ const config = {
 
 export const getLikeVideos = async(dispatch) => {
     try {
-        const response = await axios.get("/api/user/likes", config)
+        const response = await axios.get("/api/user/likes", {
+            headers: {
+              authorization: localStorage.getItem("token"),
+            },
+          })
         dispatch({type: GET_LIKED_VIDEOS, payload: response.data.likes})
     }
     catch(err) {
@@ -23,7 +27,11 @@ export const addToLikeVideo = async(video, dispatch) => {
         video,
     }
     try {
-        const response = await axios.post("/api/user/likes", data, config)
+        const response = await axios.post("/api/user/likes", data, {
+            headers: {
+              authorization: localStorage.getItem("token"),
+            },
+          })
         dispatch({type: GET_LIKED_VIDEOS, payload: response.data.likes})
     } 
     catch(err) {
@@ -33,7 +41,11 @@ export const addToLikeVideo = async(video, dispatch) => {
 
 export const deleteLikedVideo = async(id, dispatch) => {
     try {
-        const response = await axios.delete(`/api/user/likes/${id}`, config)
+        const response = await axios.delete(`/api/user/likes/${id}`, {
+            headers: {
+              authorization: localStorage.getItem("token"),
+            },
+          })
         dispatch({type: GET_LIKED_VIDEOS, payload: response.data.likes})
     }
     catch(err) {

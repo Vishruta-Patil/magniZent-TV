@@ -13,7 +13,7 @@ export const Modal = ({ id, setModal, video, from, playListid }) => {
   const { likedVideos, watchLaterVideos, historyVideos } = state;
 
   const isVideoPresent = (data, video) => {
-    const isPresent = data.find((item) => item._id === video._id);
+    const isPresent = data.find((item) => item?._id === video?._id);
     if (isPresent) return true;
     else return false;
   };
