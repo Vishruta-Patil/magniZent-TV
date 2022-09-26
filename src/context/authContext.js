@@ -9,10 +9,10 @@ const initialValue = {
 }
 
 const AuthProvider = ({children}) => {
-    const [state, dispatch] = useReducer(authReducer, initialValue)
+    const [authState, authDispatch] = useReducer(authReducer, initialValue)
     
     return (
-        <AuthContext.Provider value={{state, dispatch}}>
+        <AuthContext.Provider value={{authState, authDispatch}}>
             {children}
         </AuthContext.Provider>
     )

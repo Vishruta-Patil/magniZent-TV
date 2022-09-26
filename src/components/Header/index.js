@@ -2,14 +2,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { LOGIN_STATUS } from "../../reducer/auth/authConstant";
 import {useAuth } from "../../context/authContext"
 import "./header.css"
+import { RESET_DATA } from "../../reducer/video/videoListConstant";
+import { useVideoList } from "../../context/videoListContext";
 
 const Header = () => {
-  const { state, dispatch } = useAuth();
+  const { authState, authDispatch } = useAuth();
+  const {dispatch} = useVideoList()
   const navigate = useNavigate();
 
   const logOutHandler = () => {
     localStorage.clear();
-    dispatch({ type: LOGIN_STATUS });
+    authDispatch({ type: LOGIN_STATUS });
+   dispatch({type: RESET_DATA})
     navigate("/");
   };
 
@@ -41,7 +45,7 @@ const Header = () => {
 
         <div className="icon-container flex-gap">
         <div className="icon-unit">
-            {!state.loginStatus ? (
+            {!authState?.loginStatus ? (
               <div
                 className="flex-column flex-center secondary-color header-icon"
                 onClick={logInHandler}

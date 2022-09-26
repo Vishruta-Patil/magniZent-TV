@@ -5,9 +5,10 @@ import { signIn } from "../../Services/services";
 export const signInHandler = async (dispatch, navigate, credentials) => {
     try {
       const response = await signIn(credentials)
-      localStorage.setItem("token", response.data.encodedToken);
+      localStorage.setItem("token", response.data.token);
       navigate("/");
       dispatch({type: LOGIN_STATUS})
+      console.log(response)
     } catch (err) {
       console.log("Error: ", err);
     }
@@ -15,15 +16,16 @@ export const signInHandler = async (dispatch, navigate, credentials) => {
 
   export const login = async (email, password, dispatch, navigate) => {
     try {
-      const response = await axios.post("/api/auth/login", {
+      const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/login`, {
         email,
         password,
       });
-      localStorage.setItem("token", response.data.encodedToken);
+      localStorage.setItem("token", response.data.token);
       navigate("/");
       dispatch({type: LOGIN_STATUS})
+      console.log(response)
     } catch (err) {
-      console.log("Error: ", err);
+      console.log("Error: ", err?.response?.data?.message);
     }
   };
   

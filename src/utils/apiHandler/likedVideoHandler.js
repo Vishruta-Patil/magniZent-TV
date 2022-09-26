@@ -1,54 +1,66 @@
-import axios from "axios"
-import { GET_LIKED_VIDEOS } from "../../reducer/video/videoListConstant"
+import axios from "axios";
+import {
+  ADD_TO_LIKED_VIDEOS,
+  DELETE_FROM_LIKED_VIDEOS,
+  GET_LIKED_VIDEOS,
+} from "../../reducer/video/videoListConstant";
 
-const encodedtoken = localStorage.getItem("token");
+const token = localStorage.getItem("token");
 const config = {
   headers: {
-    authorization: encodedtoken,
+    token,
   },
 };
 
-export const getLikeVideos = async(dispatch) => {
-    try {
-        const response = await axios.get("/api/user/likes", {
-            headers: {
-              authorization: localStorage.getItem("token"),
-            },
-          })
-        dispatch({type: GET_LIKED_VIDEOS, payload: response.data.likes})
-    }
-    catch(err) {
-        console.log(err)
-    }
-}
+export const getLikeVideos = async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_ENDPOINT}/likes`,
+      {
+        headers: {
+          token,
+        },
+      }
+    );
+    dispatch({ type: GET_LIKED_VIDEOS, payload: response.data.like });
+  } catch (err) {
+    console.log(err?.response?.data?.message);
+  }
+};
 
-export const addToLikeVideo = async(video, dispatch) => {
-    const data = {
-        video,
-    }
-    try {
-        const response = await axios.post("/api/user/likes", data, {
-            headers: {
-              authorization: localStorage.getItem("token"),
-            },
-          })
-        dispatch({type: GET_LIKED_VIDEOS, payload: response.data.likes})
-    } 
-    catch(err) {
-        console.log(err)
-    }
-}
+export const addToLikeVideo = async (videoId, dispatch) => {
+  const data = {
+    videoId,
+  };
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_ENDPOINT}/likes`,
+      data,
+      {
+        headers: {
+          token,
+        },
+      }
+    );
+    dispatch({ type: ADD_TO_LIKED_VIDEOS, payload: response?.data?.like });
+  } catch (err) {
+    console.log(err?.response?.data?.message);
+  }
+};
 
-export const deleteLikedVideo = async(id, dispatch) => {
-    try {
-        const response = await axios.delete(`/api/user/likes/${id}`, {
-            headers: {
-              authorization: localStorage.getItem("token"),
-            },
-          })
-        dispatch({type: GET_LIKED_VIDEOS, payload: response.data.likes})
-    }
-    catch(err) {
-        console.log(err)
-    }
-}
+export const deleteLikedVideo = async (id, dispatch) => {
+  try {
+    const response = await axios.delete(
+      `${process.env.REACT_APP_API_ENDPOINT}/likes/${id}`,
+      {
+        headers: {
+          token,
+        },
+      }
+    );
+    dispatch({ type: DELETE_FROM_LIKED_VIDEOS, payload: id });
+    console.log(response);
+  } catch (err) {
+    console.log(err?.response);
+  }
+};

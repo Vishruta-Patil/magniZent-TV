@@ -1,10 +1,10 @@
 import axios from "axios"
 import { GET_WATCHLATER_VIDEOS } from "../../reducer/video/videoListConstant"
 
-const encodedtoken = localStorage.getItem("token");
+const token = localStorage.getItem("token");
 const config = {
   headers: {
-    authorization: encodedtoken,
+    authorization: token,
   },
 };
 

@@ -6,6 +6,7 @@ export const getVideoList = async (dispatch) => {
   dispatch({type: LOADER})
   try {
     const response = await getAllVideos();
+    console.log(response)
     dispatch({type: LOADER})
     dispatch({ type: GET_VIDEO_LIST, payload: response.data.videos});
   } catch (err) {

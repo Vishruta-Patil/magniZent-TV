@@ -6,16 +6,16 @@ import "./auth.css"
 
 export const LogIn = () => {
   const [credentails, setCredentials] = useState({});
-  const { state, dispatch } = useAuth();
+  const { authState, authDispatch } = useAuth();
 
   let navigate = useNavigate();
 
   const loginHandler = async () => {
-    await login(credentails.email, credentails.password, dispatch, navigate);
+    await login(credentails.email, credentails.password, authDispatch, navigate);
   };
 
   const guestCredentailsHandler = async () => {
-    await login("test123@gmail.com", "test123", dispatch, navigate);
+    await login("test@gmail.com", "test123", authDispatch, navigate);
   };
 
   return (

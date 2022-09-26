@@ -9,9 +9,10 @@ import "./auth.css"
 
 export const SignIn = () => {
   let navigate = useNavigate();
-  const { state, dispatch } = useAuth();
+  const { authState, authDispatch } = useAuth();
 
   const [credentials, setCredentials] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -22,6 +23,14 @@ export const SignIn = () => {
       <p className="top-msg gen-msg">
         Looks like you are new!! Please fill in the information below.
       </p>
+      <input
+        type="name"
+        className="input-box"
+        placeholder="Enter your name"
+        onChange={(e) =>
+          setCredentials({ ...credentials, name: e.target.value })
+        }
+      />
       <input
         type="email"
         className="input-box"
@@ -44,7 +53,7 @@ export const SignIn = () => {
         <label htmlFor="terms-input">I accept all the terms and conditions</label>
       </div>
 
-      <button className="hero-btn" onClick={() => signInHandler(dispatch, navigate, credentials)}>
+      <button className="hero-btn" onClick={() => signInHandler(authDispatch, navigate, credentials)}>
         Sign In
       </button>
       <p className="gen-msg">

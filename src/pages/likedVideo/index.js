@@ -7,9 +7,7 @@ import EmptyBox from "../../components/Common/EmptyPage";
 
 export const LikedVideos = () => {
   const { state, dispatch } = useVideoList();
-  const { likedVideos } = state;
-
-  const videoLength = likedVideos.length;
+  const videoLength = state.likedVideos.length;
 
   useEffect(() => {
     getLikeVideos(dispatch);
@@ -25,8 +23,8 @@ export const LikedVideos = () => {
           {state.loader ? (
             <Loader />
           ) : (
-            likedVideos.map((item, index) => (
-              <VideoCard video={item} key={index} />
+            state.likedVideos?.map((item, index) => (
+              <VideoCard video={item.video} key={index} />
             ))
           )}
         </div>
