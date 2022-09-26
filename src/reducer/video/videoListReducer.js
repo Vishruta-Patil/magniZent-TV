@@ -4,7 +4,6 @@ import {
   CATEGORY,
   GET_VIDEO,
   GET_LIKED_VIDEOS,
-  GET_WATCHLATER_VIDEOS,
   GET_HISTORY_VIDEOS,
   GET_PLAYLIST_VIDEOS,
   SET_PLAYLIST_MODAL,
@@ -54,11 +53,6 @@ const videoListReducer = (state, action) => {
           likedVideos: state.likedVideos.filter(item => item?.video?._id !== action.payload),
         };
 
-    case GET_WATCHLATER_VIDEOS:
-      return {
-        ...state,
-        watchLaterVideos: action.payload,
-      };
     case GET_HISTORY_VIDEOS:
       return {
         ...state,
@@ -93,7 +87,6 @@ const videoListReducer = (state, action) => {
         category: "All",
         video: [],
         likedVideos: [],
-        watchLaterVideos: [],
         historyVideos: [],
         playlistVideo: [],
         playlistModal: false,

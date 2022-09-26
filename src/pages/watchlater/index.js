@@ -4,15 +4,16 @@ import { useVideoList } from "../../context/videoListContext";
 import VideoCard from "../../components/Common/VideoCard";
 import { getWatchLaterVideos } from "../../utils/apiHandler/watchlaterVideoHandler";
 import EmptyBox from "../../components/Common/EmptyPage";
+import { useWatchLater } from "../../context/watchLaterContext";
 
 export const Watchlater = () => {
   const { state, dispatch } = useVideoList();
-  const {watchLaterVideos} = state
-
-  const videoLength = watchLaterVideos.length;
+  const {watchLaterState, watchLaterDispatch} = useWatchLater()
+  const {watchLaterVideos} = watchLaterState
+  const videoLength = watchLaterVideos?.length;
 
   useEffect(() => {
-    getWatchLaterVideos(dispatch);
+    getWatchLaterVideos(watchLaterDispatch);
   }, []);
 
   return (
@@ -22,11 +23,11 @@ export const Watchlater = () => {
         <EmptyBox />
       ) : (
       <div className="video-list-content">
-        {state.loader ? (
+        {state?.loader ? (
           <Loader />
         ) : (
           watchLaterVideos.map((item, index) => (
-            <VideoCard video={item} key={index} />
+            <VideoCard video={item.video} key={index} />
           ))
         )}
       </div>

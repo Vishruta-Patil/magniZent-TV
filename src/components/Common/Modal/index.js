@@ -10,7 +10,7 @@ import { deletePlaylist, deleteVideoFromPLaylist } from "../../../utils/apiHandl
 
 export const Modal = ({ id, setModal, video, from, playListid }) => {
   const { state, dispatch } = useVideoList();
-  const { likedVideos, watchLaterVideos, historyVideos } = state;
+  const { likedVideos, historyVideos } = state;
 
   const isVideoPresent = (data, video) => {
     const isPresent = data.find((item) => item?._id === video?._id);
@@ -19,7 +19,7 @@ export const Modal = ({ id, setModal, video, from, playListid }) => {
   };
 
   const isVideoLiked = isVideoPresent(likedVideos, video);
-  const isWatchLater = isVideoPresent(watchLaterVideos, video);
+  // const isWatchLater = isVideoPresent(watchLaterVideos, video);
   const isWatched = isVideoPresent(historyVideos, video);
 
   return (

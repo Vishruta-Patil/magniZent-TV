@@ -12,7 +12,6 @@ const initialValue = {
     category:"All",
     video: [],
     likedVideos: [],
-    watchLaterVideos: [],
     historyVideos: [],
     playlistVideo: [],
     playlistModal: false,

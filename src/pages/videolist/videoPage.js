@@ -19,7 +19,7 @@ const VideoListPage = () => {
     <div className="video-listing-hero-container">
       <Chip />
       <div className="video-list-content">
-        {state.loader ? (
+        {state?.loader ? (
           <Loader />
         ) : (
           videoFilterList.map((item, index) => (

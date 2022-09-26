@@ -12,31 +12,28 @@ import {
 import {
   addToWatchLaterVideo,
   deleteWatchLaterVideo,
+  getWatchLaterVideos,
 } from "../../utils/apiHandler/watchlaterVideoHandler";
 import "./index.css";
+import { useWatchLater } from "../../context/watchLaterContext";
 
 export const Video = () => {
   const params = useParams();
   const { state, dispatch } = useVideoList();
   const { video, likedVideos } = state;
 
+  console.log({state})
+  const {watchLaterState, watchLaterDispatch} = useWatchLater()
+
   useEffect(() => {
     getVideo(params.videoId, dispatch);
     getLikeVideos(dispatch) 
+    getWatchLaterVideos(watchLaterDispatch)
   }, []);
   
-
-  const isWatchLaterHandler = (video) => {
-    const isWatched = state.watchLaterVideos.find(
-      (item) => item._id === video._id
-    );
-    if (isWatched) return true;
-    else false;
-  };
-
-  const isWatchLater = isWatchLaterHandler(video);
+  const isWatchLater = watchLaterState.watchLaterVideos.some((item) => item?.video?._id === params.videoId)
   const isLiked = likedVideos.some((item) => item?.video?._id === params.videoId);
-console.log({video})
+
   return (
     <div className="video-list-container">
       <Drawer />
@@ -81,7 +78,7 @@ console.log({video})
                 {!isWatchLater ? (
                   <button
                     className="video-btn align-center"
-                    onClick={() => {addToWatchLaterVideo(video, dispatch); console.log(likedVideos)}}
+                    onClick={() => {addToWatchLaterVideo(video._id, watchLaterDispatch); console.log(likedVideos)}}
                   >
                     <span className="material-icons">watch_later</span>
                     <p>Watch Later</p>
@@ -89,7 +86,7 @@ console.log({video})
                 ) : (
                   <button
                     className="video-btn align-center"
-                    onClick={() => deleteWatchLaterVideo(video._id, dispatch)}
+                    onClick={() => deleteWatchLaterVideo(video._id, watchLaterDispatch)}
                   >
                     <span className="material-icons primary-color">
                       watch_later
