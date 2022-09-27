@@ -1,24 +1,36 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { useVideoList } from "../../context/videoListContext";
 import { getVideoFromPlaylist } from "../../utils/apiHandler/playListHandler";
 import VideoCard from "../../components/Common/VideoCard";
 import Drawer from "../../components/Drawer";
+import { usePlaylist } from "../../context/playlistContext";
 
 export const PlayListFolder = () => {
   const params = useParams();
-  const { state, dispatch } = useVideoList();
+  const { playlistState, playlistDispatch } = usePlaylist();
+  const playListVideosLength = playlistState?.singlePlaylist.length;
 
-useEffect(() => getVideoFromPlaylist(params.playlistId, dispatch), []);
-
+  useEffect(
+    () => getVideoFromPlaylist(params.playlistId, playlistDispatch),
+    []
+  );
 
   return (
     <div className="video-list-container">
       <Drawer />
       <div className="video-list-content">
-      {state.singlePlaylist.videos.map((video, index) => 
-        <VideoCard video={video} key={index} from="playlistfolder" playListid={params.playlistId}/>
-      )}
+        {playListVideosLength === 0 ? (
+          <h1 className="markup-line">No Videos Present in the Playlist</h1>
+        ) : (
+          playlistState?.singlePlaylist?.map((video, index) => (
+            <VideoCard
+              video={video}
+              key={index}
+              from="playlistfolder"
+              playListid={params.playlistId}
+            />
+          ))
+        )}
       </div>
     </div>
   );

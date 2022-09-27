@@ -12,9 +12,6 @@ const initialValue = {
     category:"All",
     video: [],
     likedVideos: [],
-    playlistVideo: [],
-    playlistModal: false,
-    singlePlaylist: []
 }
 
 const VideoListProvider = ({children}) => {

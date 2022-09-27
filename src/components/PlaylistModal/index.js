@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
+import { usePlaylist } from "../../context/playlistContext";
 import { useVideoList } from "../../context/videoListContext";
 import { SET_PLAYLIST_MODAL } from "../../reducer/video/videoListConstant";
 import { getPlaylists, createPlaylist, createVideoInPlaylist, deleteVideoFromPLaylist } from "../../utils/apiHandler/playListHandler";
 import "./index.css";
 
 const PlaylistModal = ({video, setModal}) => {
-  const { state, dispatch } = useVideoList();
   const [playlistDetails, setPlaylistDetails] = useState(false);
   const [title, setTitle] = useState("");
+  const {playlistState, playlistDispatch} = usePlaylist()
 
   useEffect(() => {
-    getPlaylists(dispatch)
+    getPlaylists(playlistDispatch)
   }, [])
 
   return (
@@ -26,10 +27,10 @@ const PlaylistModal = ({video, setModal}) => {
       </div>
 
       <div className="playlist-modal-list">
-        {state.playlistVideo.map((playlist, index) => (
-        <div className="playlist-modal-unit flex-sm-gap align-center">
-          <input type="checkbox" id={playlist._id} onChange={(e) => e.target.checked ? createVideoInPlaylist(video, playlist._id, dispatch) : deleteVideoFromPLaylist(playlist._id, video._id) }/>
-          <label for={playlist._id}>{playlist.title}</label>
+        {playlistState.playlistVideo.map((playlist, index) => (
+        <div className="playlist-modal-unit flex-sm-gap align-center" key={index}>
+          <input type="checkbox" id={playlist._id} onChange={(e) => e.target.checked ? createVideoInPlaylist(video._id, playlist._id, playlistDispatch) : deleteVideoFromPLaylist(playlist._id, video._id, playlistDispatch) }/>
+          <label for={playlist._id}>{playlist.name}</label>
         </div>
         ))}
   
@@ -53,7 +54,7 @@ const PlaylistModal = ({video, setModal}) => {
           <button
             className="hero-btn create-btn font-sm"
             style={{ flexGrow: 1 }}
-            onClick={() => createPlaylist(dispatch, title)}
+            onClick={() => createPlaylist(playlistDispatch, title)}
           >
             Create
           </button>

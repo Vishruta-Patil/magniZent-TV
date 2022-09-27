@@ -9,10 +9,9 @@ import { useHistory } from "../../../context/historyContext";
 
 const VideoCard = ({ video, from, playListid }) => {
   const [modalVisibility, setModalVisibility] = useState(false);
-  const { state, dispatch } = useVideoList();
   const {historyState, historyDispatch} = useHistory()
   const [modal, setModal] = useState(false)
-
+  
   return (
     <>
     <section className="video-card">
@@ -29,7 +28,7 @@ const VideoCard = ({ video, from, playListid }) => {
         <button
           className="more-icon"
           onClick={(e) => {
-            setModalVisibility(!modalVisibility);
+            setModalVisibility(like => !like);
           }}
         >
           <span className="material-icons">more_vert</span>

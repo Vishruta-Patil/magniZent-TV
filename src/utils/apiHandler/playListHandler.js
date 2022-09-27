@@ -1,94 +1,120 @@
-import axios from "axios"
-import { GET_PLAYLIST_VIDEOS, GET_SINGLE_PLAYLIST } from "../../reducer/video/videoListConstant"
+import axios from "axios";
+import {
+  ADD_PLAYLIST,
+  ADD_VIDEO_TO_PLAYLIST,
+  DELETE_PLAYLIST,
+  GET_PLAYLIST,
+  GET_VIDEO_FROM_PLAYLIST,
+  REMOVE_VIDEO_FROM_PLAYLIST,
+} from "../../reducer/playlist/playlistConstant";
 
-const token = localStorage.getItem("token");
-
-export const getPlaylists = async(dispatch) => {
-    try {
-    const response = await axios.get("/api/user/playlists", {
+export const getPlaylists = async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_ENDPOINT}/playlist`,
+      {
         headers: {
-          authorization: localStorage.getItem("token"),
+          token: localStorage.getItem("token"),
         },
-      })
-    dispatch({type: GET_PLAYLIST_VIDEOS, payload: response.data.playlists})
-    } 
-    catch(err) {
-        console.log(err)
-    }
-}
+      }
+    );
+    dispatch({ type: GET_PLAYLIST, payload: response.data.playlists });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-export const createPlaylist = async(dispatch, title) => {
-    const data = {
-        playlist: {title, description:"" }
-    }
-    try {
-        const response = await axios.post("/api/user/playlists", data, {
-            headers: {
-              authorization: localStorage.getItem("token"),
-            },
-          })
-        dispatch({type: GET_PLAYLIST_VIDEOS, payload: response.data.playlists})
-    }
-    catch(err) {
-        console.log(err)
-    }
-}
+export const createPlaylist = async (dispatch, name) => {
+  const data = {
+    name,
+  };
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_ENDPOINT}/playlist`,
+      data,
+      {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      }
+    );
+    dispatch({ type: ADD_PLAYLIST, payload: response.data.playlist });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-export const deletePlaylist = async(id, dispatch) => {
-    try {
-        const response = await axios.delete(`/api/user/playlists/${id}`, {
-            headers: {
-              authorization: localStorage.getItem("token"),
-            },
-          })
-        dispatch({type: GET_PLAYLIST_VIDEOS, payload: response.data.playlists})
-    }
-    catch(err) {
-        console.log(err)
-    }
-}
+export const deletePlaylist = async (playlistId, dispatch) => {
+  try {
+    const response = await axios.delete(
+      `${process.env.REACT_APP_API_ENDPOINT}/playlist/${playlistId}`,
+      {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      }
+    );
+    dispatch({ type: DELETE_PLAYLIST, payload: playlistId });
+  } catch (err) {
+    console.log(err?.response);
+  }
+};
 
-export const createVideoInPlaylist = async(video, id, dispatch) => {
-    const data = {
-        video: video
-    }
-    try {
+export const createVideoInPlaylist = async (videoId, playListId, dispatch) => {
+  const data = {
+    videoId,
+  };
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_ENDPOINT}/playlist/${playListId}`,
+      data,
+      {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      }
+    );
+    dispatch({
+      type: ADD_VIDEO_TO_PLAYLIST,
+      payload: response.data.playlistVideo,
+    });
+  } catch (err) {
+    console.log(err?.response);
+  }
+};
 
-        const response = await axios.post(`/api/user/playlists/${id}`, data, {
-            headers: {
-              authorization: localStorage.getItem("token"),
-            },
-          })
-        dispatch({type: GET_SINGLE_PLAYLIST, payload: response.data.playlist})
-    } catch(err) {
-        console.log(err)
-    }
-}
+export const deleteVideoFromPLaylist = async (
+  playListId,
+  videoId,
+  dispatch
+) => {
+  try {
+    const response = await axios.delete(
+      `${process.env.REACT_APP_API_ENDPOINT}/playlist/${playListId}/${videoId}`,
+      {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      }
+    );
+    dispatch({ type: REMOVE_VIDEO_FROM_PLAYLIST, payload: videoId });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-export const deleteVideoFromPLaylist = async(playListId, videoId, dispatch) => {
-    try {
-        const response = await axios.delete(`/api/user/playlists/${playListId}/${videoId}`, {
-            headers: {
-              authorization: localStorage.getItem("token"),
-            },
-          })
-        dispatch({type: GET_SINGLE_PLAYLIST, payload: response.data.playlist})
-    }
-    catch(err) {
-        console.log(err)
-    }
-}
-
-export const getVideoFromPlaylist = async(playListId, dispatch) => {
-    try {
-        const response = await axios.get(`/api/user/playlists/${playListId}`, {
-            headers: {
-              authorization: localStorage.getItem("token"),
-            },
-          })
-        dispatch({type: GET_SINGLE_PLAYLIST, payload: response.data.playlist})
-    }
-    catch(err) {
-        console.log(err)
-    }
-}
+export const getVideoFromPlaylist = async (playListId, dispatch) => {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_ENDPOINT}/playlist/${playListId}`,
+      {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      }
+    );
+    dispatch({ type: GET_VIDEO_FROM_PLAYLIST, payload: response.data.video });
+  } catch (err) {
+    console.log(err);
+  }
+};

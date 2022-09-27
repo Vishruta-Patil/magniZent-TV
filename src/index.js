@@ -7,6 +7,7 @@ import { VideoListProvider } from "./context/videoListContext";
 import { AuthProvider } from "./context/authContext";
 import { WatchLaterProvider } from "./context/watchLaterContext";
 import { HistoryProvider } from "./context/historyContext";
+import { PlaylistProvider } from "./context/playlistContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,7 +16,9 @@ ReactDOM.render(
       <AuthProvider>
         <VideoListProvider>
           <HistoryProvider>
-            <App />
+            <PlaylistProvider>
+              <App />
+            </PlaylistProvider>
           </HistoryProvider>
         </VideoListProvider>
       </AuthProvider>

@@ -166,3 +166,8 @@ ul {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.markup-line {
+  text-align: center;
+  font-size: 3rem;
+}

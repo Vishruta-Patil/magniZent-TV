@@ -4,12 +4,7 @@ import {
   CATEGORY,
   GET_VIDEO,
   GET_LIKED_VIDEOS,
-  GET_HISTORY_VIDEOS,
-  GET_PLAYLIST_VIDEOS,
-  SET_PLAYLIST_MODAL,
-  GET_SINGLE_PLAYLIST,
   ADD_TO_LIKED_VIDEOS,
-  ADD_TO_HISTORY_VIDEOS,
   RESET_DATA,
   DELETE_FROM_LIKED_VIDEOS,
 } from "./videoListConstant";
@@ -53,32 +48,7 @@ const videoListReducer = (state, action) => {
           likedVideos: state.likedVideos.filter(item => item?.video?._id !== action.payload),
         };
 
-    case GET_HISTORY_VIDEOS:
-      return {
-        ...state,
-        historyVideos: action.payload,
-      };
-    case ADD_TO_HISTORY_VIDEOS:
-      return {
-        ...state,
-        historyVideos: [...state.historyVideos, action.payload],
-      };
-
-    case GET_PLAYLIST_VIDEOS:
-      return {
-        ...state,
-        playlistVideo: action.payload,
-      };
-    case GET_SINGLE_PLAYLIST:
-      return {
-        ...state,
-        singlePlaylist: action.payload,
-      };
-    case SET_PLAYLIST_MODAL:
-      return {
-        ...state,
-        playlistModal: !state.playlistModal,
-      };
+    
     case RESET_DATA:
       return {
         ...state,
