@@ -5,11 +5,12 @@ import { Modal } from "../Modal";
 import { Link } from "react-router-dom";
 import PlaylistModal from "../../PlaylistModal"
 import "./videoCard.css";
+import { useHistory } from "../../../context/historyContext";
 
 const VideoCard = ({ video, from, playListid }) => {
   const [modalVisibility, setModalVisibility] = useState(false);
   const { state, dispatch } = useVideoList();
-
+  const {historyState, historyDispatch} = useHistory()
   const [modal, setModal] = useState(false)
 
   return (
@@ -18,7 +19,7 @@ const VideoCard = ({ video, from, playListid }) => {
       <Link to={`/video/${video?._id}`}>
         <div
           className="img-container flex-center"
-          onClick={() => addToHistoryVideo(video, dispatch)}
+          onClick={() => addToHistoryVideo(video._id, historyDispatch)}
         >
           <img className="video-img" src={video?.img_url} alt={video?.title} />
         </div>

@@ -2,11 +2,6 @@ import axios from "axios"
 import { GET_PLAYLIST_VIDEOS, GET_SINGLE_PLAYLIST } from "../../reducer/video/videoListConstant"
 
 const token = localStorage.getItem("token");
-const config = {
-  headers: {
-    authorization: token,
-  },
-};
 
 export const getPlaylists = async(dispatch) => {
     try {

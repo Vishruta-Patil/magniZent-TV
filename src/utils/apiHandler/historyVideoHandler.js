@@ -1,52 +1,54 @@
 import axios from "axios"
-import { GET_HISTORY_VIDEOS } from "../../reducer/video/videoListConstant"
-
-const token = localStorage.getItem("token");
-const config = {
-  headers: {
-    authorization: token,
-  },
-};
+import { ADD_TO_HISTORY_VIDEOS, GET_HISTORY_VIDEOS, REMOVE_FROM_HISTORY_VIDEOS } from "../../reducer/history/historyConstant";
 
 export const getHistoryVideos = async(dispatch) => {
     try {
-        const response = await axios.get("/api/user/history", {
+        const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/history`,
+          {
             headers: {
-              authorization: localStorage.getItem("token"),
+              token: localStorage.getItem("token"),
             },
-          })
+          }
+        )
         dispatch({type: GET_HISTORY_VIDEOS, payload: response.data.history})
     }
     catch(err) {
-        console.log(err)
+        console.log(err?.response?.data?.message)
     }
 }
 
-export const addToHistoryVideo = async(video, dispatch) => {
+export const addToHistoryVideo = async(videoId, dispatch) => {
     const data = {
-        video,
+      videoId,
     }
     try {
-        const response = await axios.post("/api/user/history", data, {
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_ENDPOINT}/history`,
+          data,
+          {
             headers: {
-              authorization: localStorage.getItem("token"),
+              token: localStorage.getItem("token"),
             },
-          })
-        dispatch({type: GET_HISTORY_VIDEOS, payload: response.data.history})
+          }
+        )
+        dispatch({type: ADD_TO_HISTORY_VIDEOS, payload: response.data.history})
     } 
     catch(err) {
-        console.log(err)
+        console.log(err?.response?.data?.message)
     }
 }
 
-export const deleteHistoryVideo = async(id, dispatch) => {
+export const deleteHistoryVideo = async(videoId, dispatch) => {
     try {
-        const response = await axios.delete(`/api/user/history/${id}`, {
+        const response = await axios.delete(
+          `${process.env.REACT_APP_API_ENDPOINT}/history/${videoId}`,
+          {
             headers: {
-              authorization: localStorage.getItem("token"),
+              token: localStorage.getItem("token"),
             },
-          })
-        dispatch({type: GET_HISTORY_VIDEOS, payload: response.data.history})
+          }
+        )
+        dispatch({type: REMOVE_FROM_HISTORY_VIDEOS, payload: videoId})
     }
     catch(err) {
         console.log(err)
@@ -55,12 +57,15 @@ export const deleteHistoryVideo = async(id, dispatch) => {
 
 export const deleteAllHistoryVideo = async(dispatch) => {
     try {
-        const response = await axios.delete(`/api/user/history/all`, {
+        const response = await axios.delete(
+          `${process.env.REACT_APP_API_ENDPOINT}/history`,
+          {
             headers: {
-              authorization: localStorage.getItem("token"),
+              token: localStorage.getItem("token"),
             },
-          })
-        dispatch({type: GET_HISTORY_VIDEOS, payload: response.data.history})
+          }
+        )
+        dispatch({type: GET_HISTORY_VIDEOS, payload: []})
     }
     catch(err) {
         console.log(err)

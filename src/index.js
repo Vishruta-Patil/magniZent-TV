@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { VideoListProvider } from "./context/videoListContext";
 import { AuthProvider } from "./context/authContext";
 import { WatchLaterProvider } from "./context/watchLaterContext";
+import { HistoryProvider } from "./context/historyContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,9 +14,9 @@ ReactDOM.render(
     <WatchLaterProvider>
       <AuthProvider>
         <VideoListProvider>
-          
+          <HistoryProvider>
             <App />
-          
+          </HistoryProvider>
         </VideoListProvider>
       </AuthProvider>
       </WatchLaterProvider>

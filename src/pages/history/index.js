@@ -8,15 +8,15 @@ import {
 } from "../../utils/apiHandler/historyVideoHandler";
 import EmptyBox from "../../components/Common/EmptyPage";
 import "./index.css";
+import { useHistory } from "../../context/historyContext";
 
 export const History = () => {
   const { state, dispatch } = useVideoList();
-  const { historyVideos } = state;
-
-  const videoLength = historyVideos.length;
+  const {historyState, historyDispatch} = useHistory()
+  const videoLength = historyState.historyVideos.length;
 
   useEffect(() => {
-    getHistoryVideos(dispatch);
+    getHistoryVideos(historyDispatch);
   }, []);
 
   return (
@@ -29,7 +29,7 @@ export const History = () => {
       <div style={{ gridArea: "btn" }}>
         <button
           className="clearHistoryBtn hero-btn"
-          onClick={() => deleteAllHistoryVideo(dispatch)}
+          onClick={() => deleteAllHistoryVideo(historyDispatch)}
         >
           Clear History
         </button>
@@ -40,8 +40,8 @@ export const History = () => {
           <Loader />
         ) : (
           <>
-            {historyVideos.map((item, index) => (
-              <VideoCard video={item} key={index} />
+            {historyState.historyVideos.map((item, index) => (
+              <VideoCard video={item.video} key={index} />
             ))}
           </>
         )}

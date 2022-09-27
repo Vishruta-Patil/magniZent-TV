@@ -6,11 +6,6 @@ import {
 } from "../../reducer/video/videoListConstant";
 
 const token = localStorage.getItem("token");
-const config = {
-  headers: {
-    token,
-  },
-};
 
 export const getLikeVideos = async (dispatch) => {
   try {
@@ -18,7 +13,7 @@ export const getLikeVideos = async (dispatch) => {
       `${process.env.REACT_APP_API_ENDPOINT}/likes`,
       {
         headers: {
-          token,
+          token: localStorage.getItem("token"),
         },
       }
     );
@@ -38,7 +33,7 @@ export const addToLikeVideo = async (videoId, dispatch) => {
       data,
       {
         headers: {
-          token,
+          token: localStorage.getItem("token"),
         },
       }
     );
@@ -54,12 +49,11 @@ export const deleteLikedVideo = async (id, dispatch) => {
       `${process.env.REACT_APP_API_ENDPOINT}/likes/${id}`,
       {
         headers: {
-          token,
+          token: localStorage.getItem("token"),
         },
       }
     );
     dispatch({ type: DELETE_FROM_LIKED_VIDEOS, payload: id });
-    console.log(response);
   } catch (err) {
     console.log(err?.response);
   }

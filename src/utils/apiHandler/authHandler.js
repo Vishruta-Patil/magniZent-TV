@@ -8,7 +8,6 @@ export const signInHandler = async (dispatch, navigate, credentials) => {
       localStorage.setItem("token", response.data.token);
       navigate("/");
       dispatch({type: LOGIN_STATUS})
-      console.log(response)
     } catch (err) {
       console.log("Error: ", err);
     }
@@ -23,7 +22,6 @@ export const signInHandler = async (dispatch, navigate, credentials) => {
       localStorage.setItem("token", response.data.token);
       navigate("/");
       dispatch({type: LOGIN_STATUS})
-      console.log(response)
     } catch (err) {
       console.log("Error: ", err?.response?.data?.message);
     }

@@ -16,19 +16,21 @@ import {
 } from "../../utils/apiHandler/watchlaterVideoHandler";
 import "./index.css";
 import { useWatchLater } from "../../context/watchLaterContext";
+import { useHistory } from "../../context/historyContext";
+import { getHistoryVideos } from "../../utils/apiHandler/historyVideoHandler";
 
 export const Video = () => {
   const params = useParams();
   const { state, dispatch } = useVideoList();
   const { video, likedVideos } = state;
-
-  console.log({state})
   const {watchLaterState, watchLaterDispatch} = useWatchLater()
+  const {historyState, historyDispatch} = useHistory()
 
   useEffect(() => {
     getVideo(params.videoId, dispatch);
     getLikeVideos(dispatch) 
     getWatchLaterVideos(watchLaterDispatch)
+    getHistoryVideos(historyDispatch);
   }, []);
   
   const isWatchLater = watchLaterState.watchLaterVideos.some((item) => item?.video?._id === params.videoId)
@@ -41,7 +43,6 @@ export const Video = () => {
         <Loader />
       ) : (
         <div className="video-container">
-           {console.log(video?.iframe_url)}
           <iframe
             className="video-iframe"      
             src={video?.iframe_url}
@@ -66,7 +67,7 @@ export const Video = () => {
                 ) : (
                   <button
                     className="video-btn align-center"
-                    onClick={() => {deleteLikedVideo(video._id, dispatch); console.log(likedVideos)}}
+                    onClick={() => deleteLikedVideo(video._id, dispatch)}
                   >
                     <span className="material-icons bold-highlight-color">
                       favorite
@@ -78,7 +79,7 @@ export const Video = () => {
                 {!isWatchLater ? (
                   <button
                     className="video-btn align-center"
-                    onClick={() => {addToWatchLaterVideo(video._id, watchLaterDispatch); console.log(likedVideos)}}
+                    onClick={() => addToWatchLaterVideo(video._id, watchLaterDispatch)}
                   >
                     <span className="material-icons">watch_later</span>
                     <p>Watch Later</p>
