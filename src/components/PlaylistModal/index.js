@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { usePlaylist } from "../../context/playlistContext";
 import { useVideoList } from "../../context/videoListContext";
 import { SET_PLAYLIST_MODAL } from "../../reducer/video/videoListConstant";
@@ -9,6 +10,8 @@ const PlaylistModal = ({video, setModal}) => {
   const [playlistDetails, setPlaylistDetails] = useState(false);
   const [title, setTitle] = useState("");
   const {playlistState, playlistDispatch} = usePlaylist()
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     getPlaylists(playlistDispatch)
@@ -54,7 +57,7 @@ const PlaylistModal = ({video, setModal}) => {
           <button
             className="hero-btn create-btn font-sm"
             style={{ flexGrow: 1 }}
-            onClick={() => createPlaylist(playlistDispatch, title)}
+            onClick={() => createPlaylist(playlistDispatch, title, navigate)}
           >
             Create
           </button>

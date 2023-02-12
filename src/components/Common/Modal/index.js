@@ -33,6 +33,14 @@ export const Modal = ({ id, setModal, video, from, playListid }) => {
     (item) => item?.video?._id === id
   );
 
+  const togglePlaylist = () => {
+    if(!localStorage.getItem("token")) {
+      navigate("/login")
+    } else {
+      setModal(true)
+    }
+  }
+
   return (
     <>
       <div className="modal-container">
@@ -62,7 +70,7 @@ export const Modal = ({ id, setModal, video, from, playListid }) => {
           <>
             <div
               className="modal-unit flex align-center"
-              onClick={() => setModal(true)}
+              onClick={togglePlaylist}
             >
               <span className="material-icons">save</span>
               <p>Add to Playlist</p>
