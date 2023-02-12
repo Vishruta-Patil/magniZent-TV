@@ -40,6 +40,9 @@ export const addToHistoryVideo = async(videoId, dispatch) => {
 
 export const deleteHistoryVideo = async(videoId, dispatch) => {
     try {
+      if(!localStorage.getItem("token")) {
+        navigate("/login")
+      }
         const response = await axios.delete(
           `${process.env.REACT_APP_API_ENDPOINT}/history/${videoId}`,
           {
@@ -57,6 +60,9 @@ export const deleteHistoryVideo = async(videoId, dispatch) => {
 
 export const deleteAllHistoryVideo = async(dispatch) => {
     try {
+      if(!localStorage.getItem("token")) {
+        navigate("/login")
+      }
         const response = await axios.delete(
           `${process.env.REACT_APP_API_ENDPOINT}/history`,
           {

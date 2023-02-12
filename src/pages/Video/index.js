@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getVideo } from "../../utils/apiHandler/videoHandler";
 import { useVideoList } from "../../context/videoListContext";
@@ -18,6 +18,7 @@ import "./index.css";
 import { useWatchLater } from "../../context/watchLaterContext";
 import { useHistory } from "../../context/historyContext";
 import { getHistoryVideos } from "../../utils/apiHandler/historyVideoHandler";
+import { toast } from "react-toastify";
 
 export const Video = () => {
   const params = useParams();
@@ -25,6 +26,8 @@ export const Video = () => {
   const { video, likedVideos } = state;
   const {watchLaterState, watchLaterDispatch} = useWatchLater()
   const {historyState, historyDispatch} = useHistory()
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     getVideo(params.videoId, dispatch);
@@ -35,6 +38,11 @@ export const Video = () => {
   
   const isWatchLater = watchLaterState.watchLaterVideos.some((item) => item?.video?._id === params.videoId)
   const isLiked = likedVideos.some((item) => item?.video?._id === params.videoId);
+
+  const copyLinkHandler = () => {   
+      navigator.clipboard.writeText(`http://localhost:3000/video/${params.videoId}`)
+      toast.success("Link copied, share the video now!")
+  }
 
   return (
     <div className="video-list-container">
@@ -59,7 +67,7 @@ export const Video = () => {
                 {!isLiked ? (
                   <button
                     className="video-btn align-center"
-                    onClick={() => addToLikeVideo(video._id, dispatch)}
+                    onClick={() => addToLikeVideo(video._id, dispatch, navigate)}
                   >
                     <span className="material-icons">favorite</span>
                     <p>Like</p>
@@ -67,7 +75,7 @@ export const Video = () => {
                 ) : (
                   <button
                     className="video-btn align-center"
-                    onClick={() => deleteLikedVideo(video._id, dispatch)}
+                    onClick={() => deleteLikedVideo(video._id, dispatch, navigate)}
                   >
                     <span className="material-icons bold-highlight-color">
                       favorite
@@ -79,7 +87,7 @@ export const Video = () => {
                 {!isWatchLater ? (
                   <button
                     className="video-btn align-center"
-                    onClick={() => addToWatchLaterVideo(video._id, watchLaterDispatch)}
+                    onClick={() => addToWatchLaterVideo(video._id, watchLaterDispatch, navigate)}
                   >
                     <span className="material-icons">watch_later</span>
                     <p>Watch Later</p>
@@ -96,11 +104,11 @@ export const Video = () => {
                   </button>
                 )}
 
-                <button className="video-btn align-center">
+                {/* <button className="video-btn align-center">
                   <span className="material-icons">bookmark</span>
                   <p>Save</p>
-                </button>
-                <button className="video-btn align-center">
+                </button> */}
+                <button className="video-btn align-center" onClick={copyLinkHandler}>
                   <span className="material-icons">share</span>
                   <p>Copy Link</p>
                 </button>

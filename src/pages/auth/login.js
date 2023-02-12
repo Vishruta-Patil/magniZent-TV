@@ -37,10 +37,10 @@ export const LogIn = () => {
           setCredentials({ ...credentails, password: e.target.value });
         }}
       />
-      <div className="terms-container flex">
+      {/* <div className="terms-container flex">
         <input id="terms-input" type="checkbox" />
         <label htmlFor="terms-input">I accept all the terms and conditions</label>
-      </div>
+      </div> */}
 
       <button className="hero-btn" onClick={loginHandler}>
         Login

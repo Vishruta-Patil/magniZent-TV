@@ -13,6 +13,8 @@ const VideoListPage = () => {
   useEffect(() => {
     getVideoList(dispatch);
   }, []);
+
+  console.log(videoFilterList)
   
 
   return (

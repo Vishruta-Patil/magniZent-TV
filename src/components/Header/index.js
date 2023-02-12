@@ -2,8 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { LOGIN_STATUS } from "../../reducer/auth/authConstant";
 import {useAuth } from "../../context/authContext"
 import "./header.css"
-import { RESET_DATA } from "../../reducer/video/videoListConstant";
+import { RESET_DATA, SEARCH_VIDEO } from "../../reducer/video/videoListConstant";
 import { useVideoList } from "../../context/videoListContext";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const { authState, authDispatch } = useAuth();
@@ -15,6 +16,7 @@ const Header = () => {
     authDispatch({ type: LOGIN_STATUS });
    dispatch({type: RESET_DATA})
     navigate("/");
+    toast.success("You have Logged Out sucessfully")
   };
 
   const logInHandler = () => {

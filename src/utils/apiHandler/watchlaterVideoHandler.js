@@ -20,11 +20,14 @@ export const getWatchLaterVideos = async(dispatch) => {
     }
 }
 
-export const addToWatchLaterVideo = async(videoId, dispatch) => {
+export const addToWatchLaterVideo = async(videoId, dispatch, navigate) => {
     const data = {
       videoId,
     }
     try {
+      if(!localStorage.getItem("token")) {
+        navigate("/login")
+      }
         const response = await axios.post(
           `${process.env.REACT_APP_API_ENDPOINT}/watchlater`,
           data,
@@ -41,8 +44,11 @@ export const addToWatchLaterVideo = async(videoId, dispatch) => {
     }
 }
 
-export const deleteWatchLaterVideo = async(id, dispatch) => {
+export const deleteWatchLaterVideo = async(id, dispatch, navigate) => {
     try {
+      if(!localStorage.getItem("token")) {
+        navigate("/login")
+      }
         const response = await axios.delete(
           `${process.env.REACT_APP_API_ENDPOINT}/watchlater/${id}`,
           {

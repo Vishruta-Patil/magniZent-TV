@@ -23,11 +23,14 @@ export const getLikeVideos = async (dispatch) => {
   }
 };
 
-export const addToLikeVideo = async (videoId, dispatch) => {
+export const addToLikeVideo = async (videoId, dispatch, navigate) => {
   const data = {
     videoId,
   };
   try {
+    if(!localStorage.getItem("token")) {
+      navigate("/login")
+    }
     const response = await axios.post(
       `${process.env.REACT_APP_API_ENDPOINT}/likes`,
       data,
@@ -43,8 +46,11 @@ export const addToLikeVideo = async (videoId, dispatch) => {
   }
 };
 
-export const deleteLikedVideo = async (id, dispatch) => {
+export const deleteLikedVideo = async (id, dispatch, navigate) => {
   try {
+    if(!localStorage.getItem("token")) {
+      navigate("/login")
+    }
     const response = await axios.delete(
       `${process.env.REACT_APP_API_ENDPOINT}/likes/${id}`,
       {

@@ -46,6 +46,9 @@ export const createPlaylist = async (dispatch, name) => {
 
 export const deletePlaylist = async (playlistId, dispatch) => {
   try {
+    if(!localStorage.getItem("token")) {
+      navigate("/login")
+    }
     const response = await axios.delete(
       `${process.env.REACT_APP_API_ENDPOINT}/playlist/${playlistId}`,
       {
@@ -65,6 +68,9 @@ export const createVideoInPlaylist = async (videoId, playListId, dispatch) => {
     videoId,
   };
   try {
+    if(!localStorage.getItem("token")) {
+      navigate("/login")
+    }
     const response = await axios.post(
       `${process.env.REACT_APP_API_ENDPOINT}/playlist/${playListId}`,
       data,
@@ -88,7 +94,11 @@ export const deleteVideoFromPLaylist = async (
   videoId,
   dispatch
 ) => {
+  
   try {
+    if(!localStorage.getItem("token")) {
+      navigate("/login")
+    }
     const response = await axios.delete(
       `${process.env.REACT_APP_API_ENDPOINT}/playlist/${playListId}/${videoId}`,
       {

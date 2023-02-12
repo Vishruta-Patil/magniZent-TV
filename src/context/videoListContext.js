@@ -12,6 +12,7 @@ const initialValue = {
     category:"All",
     video: [],
     likedVideos: [],
+    searchVideo: "",
 }
 
 const VideoListProvider = ({children}) => {

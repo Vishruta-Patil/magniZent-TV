@@ -48,10 +48,10 @@ export const SignIn = () => {
         }
       />
 
-      <div className="terms-container flex">
+      {/* <div className="terms-container flex">
         <input id="terms-input" type="checkbox" />{" "}
         <label htmlFor="terms-input">I accept all the terms and conditions</label>
-      </div>
+      </div> */}
 
       <button className="hero-btn" onClick={() => signInHandler(authDispatch, navigate, credentials)}>
         Sign In

@@ -7,6 +7,7 @@ import {
   ADD_TO_LIKED_VIDEOS,
   RESET_DATA,
   DELETE_FROM_LIKED_VIDEOS,
+  SEARCH_VIDEO,
 } from "./videoListConstant";
 
 const videoListReducer = (state, action) => {
@@ -47,6 +48,13 @@ const videoListReducer = (state, action) => {
           ...state,
           likedVideos: state.likedVideos.filter(item => item?.video?._id !== action.payload),
         };
+
+        case SEARCH_VIDEO:
+          console.log(action.payload)
+          return {
+            ...state,
+            videoList: state.videoList.filter(item => action.payload === item.title)
+          }
 
     
     case RESET_DATA:

@@ -13,12 +13,15 @@ import {
 import { useWatchLater } from "../../../context/watchLaterContext";
 import { useHistory } from "../../../context/historyContext";
 import { usePlaylist } from "../../../context/playlistContext";
+import { useNavigate } from "react-router-dom";
 
 export const Modal = ({ id, setModal, video, from, playListid }) => {
   const { state, dispatch } = useVideoList();
   const { watchLaterState, watchLaterDispatch } = useWatchLater();
   const { historyState, historyDispatch } = useHistory();
   const { playlistState, playlistDispatch } = usePlaylist();
+
+  const navigate = useNavigate()
 
   const isWatched = historyState.historyVideos.some(
     (item) => item?.video?._id === id
@@ -79,7 +82,7 @@ export const Modal = ({ id, setModal, video, from, playListid }) => {
               <div
                 className="modal-unit flex align-center"
                 onClick={() =>
-                  addToWatchLaterVideo(video._id, watchLaterDispatch)
+                  addToWatchLaterVideo(video._id, watchLaterDispatch, navigate)
                 }
               >
                 <span className="material-icons">watch_later</span>
@@ -90,7 +93,7 @@ export const Modal = ({ id, setModal, video, from, playListid }) => {
             {isVideoLiked && (
               <div
                 className="modal-unit flex align-center bold-highlight-color"
-                onClick={() => deleteLikedVideo(id, dispatch)}
+                onClick={() => deleteLikedVideo(id, dispatch, navigate)}
               >
                 <span className="material-icons">delete</span>
                 <p>Remove from liked videos</p>
